@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_action :require_authentication, only: [:index, :create]
+  before_action :require_authentication, only: [ :index, :create ]
 
   def index
   end

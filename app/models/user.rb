@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
-   # Add invitation methods
+  # Add invitation methods
   def generate_invitation_token
     self.class.verifier.generate({ user_id: id }, expires_in: 7.days)
   end

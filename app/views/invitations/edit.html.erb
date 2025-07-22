@@ -1,15 +1,36 @@
-<h1>Set up your password</h1>
+<div class="auth-container">
+  <% if flash[:alert] %>
+    <div class="flash-message flash-alert" id="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
 
-<%= form_with model: @user, url: invitation_path(token: params[:token]), method: :patch do |form| %>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true %>
-  </div>
+  <h1 class="auth-title">
+    Set up your password
+  </h1>
+  <p class="auth-subtitle">Please set your password to activate your account.</p>
 
-  <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, required: true %>
-  </div>
+  <%= form_with model: @user, url: invitation_path(token: params[:token]), method: :patch do |form| %>
+    <div class="form-group">
+      <%= form.password_field :password, 
+            required: true, 
+            autocomplete: "new-password", 
+            placeholder: "Enter new password", 
+            maxlength: 72, 
+            class: "form-input" %>
+    </div>
 
-  <%= form.submit "Activate Account" %>
-<% end %>
+    <div class="form-group">
+      <%= form.password_field :password_confirmation, 
+            required: true, 
+            autocomplete: "new-password", 
+            placeholder: "Repeat new password", 
+            maxlength: 72, 
+            class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Activate Account", class: "btn-primary" %>
+    </div>
+  <% end %>
+</div>

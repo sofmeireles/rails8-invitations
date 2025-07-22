@@ -1,16 +1,36 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
-
-<h2>Invite someone</h2>
-
-<% if Current.user %>
-  <hr>
-  <%= form_with url: "/invite", method: :post do |form| %>
-    <%= form.email_field :email, placeholder: "friend@example.com", required: true %>
-    <%= form.submit "Send Invitation" %>
+<div class="auth-container">
+  <% if flash[:alert] %>
+    <div class="flash-message flash-alert" id="alert">
+      <%= flash[:alert] %>
+    </div>
   <% end %>
 
-<p><%= link_to "Logout", session_path, method: :delete, data: { turbo_method: :delete } %></p>
+  <% if flash[:notice] %>
+    <div class="flash-message flash-notice" id="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
-<% end %>
 
+  <% if Current.user %>
+    <div class="user-section">
+      <h2 class="auth-section-title">Invite someone</h2>
+      <hr class="section-divider">
+
+      <%= form_with url: "/invite", method: :post, class: "form-inline" do |form| %>
+        <%= form.email_field :email, 
+              placeholder: "friend@example.com", 
+              required: true, 
+              class: "form-input" %>
+        <%= form.submit "Send Invitation", class: "btn-primary" %>
+      <% end %>
+
+      <div class="auth-footer">
+        <%= link_to "Logout", session_path, 
+              method: :delete, 
+              data: { turbo_method: :delete }, 
+              class: "btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>
