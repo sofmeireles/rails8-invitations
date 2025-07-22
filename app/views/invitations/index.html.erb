@@ -1,0 +1,34 @@
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+
+<% if Current.user %>
+  <h2>Invite someone</h2>
+  <%= form_with url: "/invite", method: :post do |form| %>
+    <%= form.email_field :email_address, placeholder: "friend@example.com", required: true %>
+    <%= form.submit "Send Invitation" %>
+  <% end %>
+
+  <h2>Pending Invitations</h2>
+  <% if @pending_invitations.any? %>
+    <ul>
+      <% @pending_invitations.each do |invitation| %>
+        <li><%= invitation.email_address %> - Invited on <%= invitation.created_at.strftime("%B %d, %Y") %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No pending invitations.</p>
+  <% end %>
+
+  <h2>Accepted Invitations</h2>
+  <% if @accepted_invitations.any? %>
+    <ul>
+      <% @accepted_invitations.each do |invitation| %>
+        <li><%= invitation.email_address %> - Accepted on <%= invitation.invitation_accepted_at.strftime("%B %d, %Y") %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No accepted invitations.</p>
+  <% end %>
+
+  <%= link_to "Logout", session_path, data: { turbo_method: :delete } %>
+<% end %>

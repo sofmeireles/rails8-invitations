@@ -1,0 +1,5 @@
+class AddInvitationAcceptedAtToUsers < ActiveRecord::Migration[8.0]
+  def change
+    add_column :users, :invitation_accepted_at, :datetime
+  end
+end
