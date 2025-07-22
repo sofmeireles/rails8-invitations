@@ -1,11 +1,47 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<div class="auth-container">
+  <% if flash[:alert] %>
+    <div class="flash-message flash-alert" id="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
 
-<%= form_with url: session_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
-<% end %>
-<br>
+  <% if flash[:notice] %>
+    <div class="flash-message flash-notice" id="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
-<%= link_to "Forgot password?", new_password_path %>
+  <h1 class="auth-title">
+    Sign In
+  </h1>
+  <p class="auth-subtitle">Please enter your credentials to access your account.</p>
+
+  <%= form_with url: session_path do |form| %>
+    <div class="form-group">
+      <%= form.email_field :email_address, 
+            required: true, 
+            autofocus: true, 
+            autocomplete: "username", 
+            placeholder: "Enter your email address", 
+            value: params[:email_address], 
+            class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.password_field :password, 
+            required: true, 
+            autocomplete: "current-password", 
+            placeholder: "Enter your password", 
+            maxlength: 72, 
+            class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Sign in", class: "btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="auth-footer">
+    <%= link_to "Forgot password?", new_password_path, class: "auth-link" %>
+  </div>
+</div>

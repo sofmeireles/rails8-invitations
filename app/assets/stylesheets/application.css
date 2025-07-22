@@ -8,3 +8,216 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.auth-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.auth-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.auth-subtitle {
+  margin-bottom: 24px;
+  color: #6b7280;
+}
+
+.flash-message {
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.flash-alert {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.flash-notice {
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.form-group {
+  margin: 20px 0;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.auth-link {
+  color: #2563eb;
+  text-decoration: underline;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.auth-link:hover {
+  color: #1d4ed8;
+}
+
+.auth-footer {
+  margin-top: 16px;
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid #d1d5db;
+  margin: 24px 0;
+}
+
+.auth-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #374151;
+}
+
+.btn-secondary {
+  background-color: #6b7280;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  background-color: #4b5563;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-danger {
+  background-color: #dc2626;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+  color: white;
+  text-decoration: none;
+}
+
+.form-inline {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-inline .form-input {
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+.form-inline .btn-primary {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.user-section {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.invitations-section {
+  max-width: 600px;
+  margin: 20px auto 0;
+  padding: 20px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.invitations-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.invitation-item {
+  padding: 12px 16px;
+  margin: 8px 0;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  color: #374151;
+  font-size: 14px;
+}
+
+.invitation-item strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Style for when there are no invitations */
+.invitations-section p {
+  color: #6b7280;
+  font-style: italic;
+  margin: 16px 0;
+  text-align: center;
+}
+
+/* Optional: Add some visual separation between sections */
+.invitations-section h2:not(:first-child) {
+  margin-top: 32px;
+}
