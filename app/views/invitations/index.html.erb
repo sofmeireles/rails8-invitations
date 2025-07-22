@@ -1,34 +1,61 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
-
-<% if Current.user %>
-  <h2>Invite someone</h2>
-  <%= form_with url: "/invite", method: :post do |form| %>
-    <%= form.email_field :email_address, placeholder: "friend@example.com", required: true %>
-    <%= form.submit "Send Invitation" %>
+<div class="auth-container">
+  <% if flash[:notice] %>
+    <div class="flash-message flash-notice" id="notice">
+      <%= flash[:notice] %>
+    </div>
   <% end %>
 
-  <h2>Pending Invitations</h2>
+  <% if Current.user %>
+    <div class="user-section">
+      <h2 class="auth-section-title">Invite someone</h2>
+      <hr class="section-divider">
+
+      <%= form_with url: "/invite", method: :post, class: "form-inline" do |form| %>
+        <%= form.email_field :email_address,
+              placeholder: "friend@example.com",
+              required: true,
+              class: "form-input" %>
+        <%= form.submit "Send Invitation", class: "btn-primary" %>
+      <% end %>
+
+      <div class="auth-footer">
+        <%= link_to "Logout", session_path,
+              method: :delete,
+              data: { turbo_method: :delete },
+              class: "btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="invitations-section">
+  <h2 class="auth-section-title">Pending Invitations</h2>
+  <hr class="section-divider">
+
   <% if @pending_invitations.any? %>
-    <ul>
+    <ul class="invitations-list">
       <% @pending_invitations.each do |invitation| %>
-        <li><%= invitation.email_address %> - Invited on <%= invitation.created_at.strftime("%B %d, %Y") %></li>
+        <li class="invitation-item">
+          <strong><%= invitation.email_address %></strong> - Invited on <%= invitation.created_at.strftime("%B %d, %Y") %>
+        </li>
       <% end %>
     </ul>
   <% else %>
     <p>No pending invitations.</p>
   <% end %>
 
-  <h2>Accepted Invitations</h2>
+  <h2 class="auth-section-title">Accepted Invitations</h2>
+  <hr class="section-divider">
+
   <% if @accepted_invitations.any? %>
-    <ul>
+    <ul class="invitations-list">
       <% @accepted_invitations.each do |invitation| %>
-        <li><%= invitation.email_address %> - Accepted on <%= invitation.invitation_accepted_at.strftime("%B %d, %Y") %></li>
+        <li class="invitation-item">
+          <strong><%= invitation&.email_address %></strong> - Accepted on <%= invitation&.invitation_accepted_at.strftime("%B %d, %Y") %>
+        </li>
       <% end %>
     </ul>
   <% else %>
     <p>No accepted invitations.</p>
   <% end %>
-
-  <%= link_to "Logout", session_path, data: { turbo_method: :delete } %>
-<% end %>
+</div>

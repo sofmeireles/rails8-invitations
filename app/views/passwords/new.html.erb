@@ -1,8 +1,31 @@
-<h1>Forgot your password?</h1>
+<div class="auth-container">
+  <h1 class="auth-title">Forgot your password?</h1>
+  
+  <% if flash[:alert] %>
+    <div class="flash-message flash-alert" id="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+  <p class="auth-subtitle">Enter your email address and we'll send you instructions to reset your password.</p>
 
-<%= form_with url: passwords_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.submit "Email reset instructions" %>
-<% end %>
+  <%= form_with url: passwords_path do |form| %>
+    <div class="form-group">
+      <%= form.email_field :email_address, 
+            required: true, 
+            autofocus: true, 
+            autocomplete: "username", 
+            placeholder: "Enter your email address", 
+            value: params[:email_address], 
+            class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Email reset instructions", class: "btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="auth-footer">
+    <%= link_to "Back to Sign In", new_session_path, class: "auth-link" %>
+  </div>
+</div>
