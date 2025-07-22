@@ -13,4 +13,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # # Add invitation routes
+  post "/invite", to: "invitations#create"
+  get "/invite/:token", to: "invitations#edit", as: :edit_invitation
+  patch "/invite/:token", to: "invitations#update", as: :invitation
+
+  root "invitations#index"
 end
