@@ -1,24 +1,36 @@
-# README
+# Rails 8 User Invitations Demo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple user invitation system built with Rails 8's native authentication.
 
-Things you may want to cover:
+## What it does
 
-* Ruby version
+- Existing users can invite new users by email
+- Invitees get a secure link to set up their password
+- No open registration - invitation-only access
+- Uses Rails 8's built-in authentication (no Devise)
 
-* System dependencies
+## Quick Start
 
-* Configuration
+```bash
+git clone https://github.com/sofmeireles/rails8-invitations.git
+cd rails8-invitations
+bundle install
+rails db:setup
+bin/dev
+```
 
-* Database creation
+**Demo login:**
+- Email: `demo@example.com`
+- Password: `password`
 
-* Database initialization
+## How it works
 
-* How to run the test suite
+1. User sends invitation → creates account with temp password
+2. Invitee gets email with secure token link
+3. They set their password and account is activated
 
-* Services (job queues, cache servers, search engines, etc.)
+Built using Rails' `generates_token_for` for secure, expiring tokens.
 
-* Deployment instructions
+## Blog Post
 
-* ...
+Read the full implementation guide: [Coming soon]
