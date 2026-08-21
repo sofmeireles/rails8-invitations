@@ -1,6 +1,7 @@
-# Rails 8 User Invitations Demo
+# Rails 8 User Invitations
 
 A simple user invitation system built with Rails 8's native authentication.
+Read the full implementation guide [here](https://medium.com/deemaze-software/user-invitations-with-rails-8-authentication-ba229fab466).
 
 ## What it does
 
@@ -33,4 +34,4 @@ Built using Rails' `generates_token_for` for secure, expiring tokens.
 
 ## Blog Post
 
-Read the full implementation guide: [Coming soon]
+Read the full implementation guide: https://medium.com/deemaze-software/user-invitations-with-rails-8-authentication-ba229fab466e 
